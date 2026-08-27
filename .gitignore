@@ -1,0 +1,32 @@
+# Large raw NetCDF download files
+pipeline/raw/*.nc
+
+# Allow GPU binary data & Float indices for team handoff
+!data/gpu/
+!data/floats/
+!data/slices/
+
+# Python cache & virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.pytest_cache/
+.env
+backend/.env
+
+
+# Node / Frontend dependencies & builds
+frontend/node_modules/
+frontend/dist/
+package-lock.json
+frontend/package-lock.json
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
