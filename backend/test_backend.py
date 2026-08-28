@@ -46,6 +46,13 @@ def test_endpoints():
     print(f"[OK] GET /field?variable=temperature&depth=0&time=2026-08-20 -> variable={field_data.get('variable')}, grid shape={len(field_data.get('values'))}x{len(field_data.get('values')[0])}")
     assert field_data.get("variable") == "temperature"
     assert field_data.get("depth") == 0
+
+    # 4b. Test /field with invalid variable
+    res_invalid = client.get("/field?variable=invalid_variable&depth=100&time=2026-08-20")
+    assert res_invalid.status_code == 400
+    error_data = res_invalid.json()
+    print(f"[OK] Invalid variable -> {error_data.get('detail')}")
+    assert "Unsupported variable" in error_data.get("detail", "")
     
     # 5. Test /floats
     res = client.get("/floats")
