@@ -172,7 +172,8 @@ def get_field(
                 try:
                     with open(fallback_file, "r", encoding="utf-8") as f:
                         data = json.load(f)
-                        data["depth"] = depth
+                        data["requested_depth"] = depth
+                        data["depth"] = nearest_depth
                         data["time"] = time
                         return data
                 except Exception:
