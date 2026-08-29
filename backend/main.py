@@ -139,6 +139,12 @@ def get_field(
             detail=f"Unsupported variable '{variable}'. Available variables: {sorted(valid_variables)}"
         )
 
+    if depth < 0:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Depth cannot be negative. Received: {depth}"
+        )
+
     depth_str = str(depth)
     target_file = os.path.join(SLICES_DIR, variable, depth_str, f"{time}.json")
     
