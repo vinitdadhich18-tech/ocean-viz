@@ -149,7 +149,7 @@ setLoading(false);
   let activeSliceMin = null;
   let activeSliceMax = null;
 
-  if (scaleMode === 'local' && slicesData?.length) {
+  if (scaleMode === 'linear' && slicesData?.length) {
     const activeSlice = slicesData.find((s) => Number(s.depth) === Number(activeDepth)) || slicesData[0];
     if (activeSlice?.values?.length) {
       let min = Infinity;
@@ -171,8 +171,8 @@ setLoading(false);
 
 
 
-  const effectiveMin = minOverride !== null ? minOverride : (activeSliceMin !== null ? activeSliceMin : valueRange.min);
-  const effectiveMax = maxOverride !== null ? maxOverride : (activeSliceMax !== null ? activeSliceMax : valueRange.max);
+  const effectiveMin = minOverride !== null ? minOverride : valueRange.min;
+  const effectiveMax = maxOverride !== null ? maxOverride : valueRange.max;
 
 
   // 2. Render Globe View if view === "globe"
