@@ -1,10 +1,14 @@
 # Large raw NetCDF download files
 pipeline/raw/*.nc
 
-# Allow GPU binary data & Float indices for team handoff
-!data/gpu/
+# Generated GPU binary datasets
+data/gpu/*.bin
+
+# Keep metadata and processed lightweight data
+!data/gpu/manifest.json
 !data/floats/
 !data/slices/
+!data/reports/
 
 # Python cache & virtual environments
 __pycache__/
@@ -30,3 +34,4 @@ frontend/package-lock.json
 Thumbs.db
 .vscode/
 .idea/
+*.zip
